@@ -1,4 +1,4 @@
-package org.cracking_the_coding_interview.chapter_1.is_unique;
+package main.java.is_unique.org.crackingthecodinginterview.chapter01;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,17 +37,17 @@ public class Main {
     }
 
     public static void main(String[] args) {
-	    String[] strings = new String[]{"teeth", "sharks", "coding", "dad"};
+        String[] strings = new String[]{"teeth", "sharks", "coding", "dad"};
 
-	    System.out.println("isUnique:");
-	    for (String string:strings) {
+        System.out.println("isUnique:");
+        for (String string : strings) {
             System.out.println(String.format("%1$s: %2$b", string, isUnique(string)));
         }
 
         System.out.println();
 
         System.out.println("isUniqueNoDataStructure:");
-        for (String string:strings) {
+        for (String string : strings) {
             System.out.println(String.format("%1$s: %2$b", string, isUniqueNoDataStructure(string)));
         }
     }
