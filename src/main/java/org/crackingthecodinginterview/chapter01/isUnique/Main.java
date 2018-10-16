@@ -1,4 +1,4 @@
-package main.java.is_unique.org.crackingthecodinginterview.chapter01;
+package main.java.org.crackingthecodinginterview.chapter01.isUnique;
 
 import java.util.ArrayList;
 import java.util.List;
