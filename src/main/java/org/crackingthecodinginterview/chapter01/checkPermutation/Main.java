@@ -1,8 +1,6 @@
 package main.java.org.crackingthecodinginterview.chapter01.checkPermutation;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.List;
 
 public class Main {
 
