@@ -1,10 +1,10 @@
-package main.java.org.crackingthecodinginterview.chapter01.checkPermutation;
+package org.crackingthecodinginterview.chapter01.checkPermutation;
 
 import java.util.Arrays;
 
 public class Main {
 
-    private static boolean isPermutationSortedString(String str1, String str2) {
+    static boolean isPermutationSortedString(String str1, String str2) {
         if (str1.length() != str2.length()) {
             return false;
         }

@@ -1,11 +1,11 @@
-package main.java.org.crackingthecodinginterview.chapter01.isUnique;
+package org.crackingthecodinginterview.chapter01.isUnique;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-    private static boolean isUniqueListDataStructure(String str) {
+    static boolean isUniqueListDataStructure(String str) {
         List<Character> chars = new ArrayList<>();
 
         for (int i = 0; i < str.length(); i++) {

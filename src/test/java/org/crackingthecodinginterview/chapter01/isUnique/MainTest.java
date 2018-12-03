@@ -1,4 +1,21 @@
-package test.java.org.crackingthecodinginterview.chapter01.isUnique;
+package org.crackingthecodinginterview.chapter01.isUnique;
 
-public class MainTest {
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+class MainTest {
+
+    @Test
+    void isUniqueListDataStructureShouldReturnFalse() {
+        boolean isUniqueListDataStructure = Main.isUniqueListDataStructure("teeth");
+
+        Assertions.assertFalse(isUniqueListDataStructure);
+    }
+
+    @Test
+    void isUniqueListDataStructureShouldReturnTrue() {
+        boolean isUniqueListDataStructure = Main.isUniqueListDataStructure("coding");
+
+        Assertions.assertTrue(isUniqueListDataStructure);
+    }
 }
