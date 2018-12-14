@@ -3,11 +3,11 @@ package org.crackingthecodinginterview.chapter01.isUnique;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
-
+class Main {
     static boolean isUniqueListDataStructure(String str) {
         List<Character> chars = new ArrayList<>();
 
+        // determine if the string is fully unique by making sure there are no repeatable characters in the array
         for (int i = 0; i < str.length(); i++) {
             char character = str.charAt(i);
 
@@ -24,6 +24,7 @@ public class Main {
     private static boolean isUniqueNoDataStructure(String str) {
         int checker = 0;
 
+        // determine if the string is fully unique by making sure there are no repeatable characters through a bitshift checker
         for (int i = 0; i < str.length(); ++i) {
             int val = str.charAt(i) - 'a';
 

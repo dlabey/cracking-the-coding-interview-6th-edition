@@ -1,23 +1,19 @@
 package org.crackingthecodinginterview.chapter01.urlify;
 
-public class Main {
-
+class Main {
     static char[] urlify(char[] str) {
+        // start from the end and this assumes fixed length like the book, if not do array copy
         for (int i = 0; i < str.length; i++) {
             if (str[i] == ' ') {
-                for (int j = str.length - 1; j > i; j--) {
-                    for (int k = 0; k <= 2; k++) {
-                        int l = j - k;
-                        int before = l - 1;
-
-                        str[l] = str[before];
-                    }
+                // shift right 2 spaces starting at the position after the original space until the array length is reached
+                for (int j = str.length - 2; j > i + 1; j = j - 2) {
+                    str[j] = str[j - 2];
+                    str[j + 1] = str[j - 1];
                 }
+                // replace the space and the 2 chars after with %20
                 str[i] = '%';
                 str[i + 1] = '2';
                 str[i + 2] = '0';
-
-                return urlify(str);
             }
         }
 
