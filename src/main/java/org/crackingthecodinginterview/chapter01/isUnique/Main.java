@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Main {
+
     static boolean isUniqueListDataStructure(String str) {
         List<Character> chars = new ArrayList<>();
 

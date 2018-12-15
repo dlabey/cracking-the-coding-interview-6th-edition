@@ -1,6 +1,7 @@
 package org.crackingthecodinginterview.chapter01.urlify;
 
 class Main {
+
     static char[] urlifyFixed(char[] str) {
         // start from the end and this assumes fixed length like the book
         for (int i = 0; i < str.length; i++) {

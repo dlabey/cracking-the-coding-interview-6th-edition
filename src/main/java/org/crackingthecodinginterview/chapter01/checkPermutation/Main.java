@@ -3,6 +3,7 @@ package org.crackingthecodinginterview.chapter01.checkPermutation;
 import java.util.Arrays;
 
 class Main {
+
     static boolean isPermutationSortedString(String str1, String str2) {
         // make sure the length of the string is the same length, otherwise its not a permutation
         if (str1.length() != str2.length()) {
