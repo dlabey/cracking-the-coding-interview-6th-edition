@@ -16,6 +16,6 @@ class MainTest {
     void isPalindromePermutationShouldReturnFalse() {
         boolean isPalindromePermutation = Main.isPalindromePermutation("big ruth");
 
-        Assertions.assertTrue(isPalindromePermutation);
+        Assertions.assertFalse(isPalindromePermutation);
     }
 }

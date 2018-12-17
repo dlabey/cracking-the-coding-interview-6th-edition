@@ -1,64 +1,41 @@
 package org.crackingthecodinginterview.chapter01.palindromePermutation;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Main {
 
-    private static boolean isPalindrome(String str, int s, int e) {
-        if (s == e) {
-            return true;
-        } else if (str.charAt(s) != str.charAt(e)) {
-            return false;
-        } else if (s < e + 1) {
-            return isPalindrome(str, s + 1, e - 1);
-        }
+    static boolean isPalindromePermutation(String str) {
+        // make a hash map to store the count of character occurrences
+        HashMap<Character, Integer> charCounts = new HashMap<>();
 
-        return true;
-    }
+        // go through the string and skip spaces, but keep track of how many occurrences of a char occur
+        for (int i = 0; i < str.length(); i++) {
+            Character character = str.toLowerCase().charAt(i);
 
-    private static boolean isPalindrome(String str) {
-        return isPalindrome(str, 0, str.length() - 1);
-    }
+            if (character == ' ') {
+                continue;
+            }
 
-    private static String swap(String str, int i, int j) {
-        char temp;
-        char[] strArray = str.toCharArray();
+            Object charCount = charCounts.get(character);
 
-        temp = strArray[i];
-        strArray[i] = strArray[j];
-        strArray[j] = temp;
-
-        return String.valueOf(strArray);
-    }
-
-    private static boolean isPalindromePermutation(String str, int l, int r) {
-        boolean isPalindrome = false;
-
-        for (int i = l; i <= r; i++) {
-            if (l == r) {
-                // System.out.println(str);
-                System.out.println(str.substring(0, str.length() - 3) + " " + str.substring(str.length() - 3));
-
-                isPalindrome = isPalindrome(str);
-
-                if (isPalindrome) {
-                    break;
-                }
+            if (charCount == null) {
+                charCounts.put(character, 1);
             } else {
-                str = swap(str, l, i);
-                isPalindromePermutation(str, l + 1, r);
-                str = swap(str, l, i);
+                charCount = (int)charCount + 1;
+                charCounts.put(character, (int)charCount);
             }
         }
 
-        return isPalindrome;
-    }
+        // go through the hash map and check if there is more than 1 odd occurrence (means not a palindrome)
+        Integer oddCharCount = 0;
+        for (Integer charCount : charCounts.values()) {
+            if (charCount % 2 != 0 && ++oddCharCount > 1) {
+                return false;
+            }
+        }
 
-    static boolean isPalindromePermutation(String str) {
-        // strip any spaces and convert to lowercase
-        str = str.replace(" ", "").toLowerCase();
-
-        // check if the palindrome is a permutation
-
-        return isPalindromePermutation(str, 0, str.length() - 1);
+        return true;
     }
 
     public static void main(String[] args) {
