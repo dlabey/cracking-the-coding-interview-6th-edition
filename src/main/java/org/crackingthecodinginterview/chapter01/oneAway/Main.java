@@ -3,29 +3,55 @@ package org.crackingthecodinginterview.chapter01.oneAway;
 public class Main {
 
     static boolean isOneAway(String original, String changed) {
-        if (original.equals(changed)) {
+        if (Math.abs(original.length() - changed.length()) > 1) {
             return false;
         }
 
-        int changes = 0;
-        int length = original.length() > changed.length() ? changed.length() : original.length();
+        if (original.length() == changed.length()) {
+            int diffs = 0;
 
-        for (int i = 0; i < length; i++) {
-            if (original.charAt(i) != changed.charAt(i)) {
-                changes++;
-                break;
+            for (int i = 0; i < original.length(); i++) {
+                if (original.charAt(i) != changed.charAt(i)) {
+                    if (++diffs > 1) {
+                        return false;
+                    }
+                }
+            }
+        } else {
+            String longer;
+            String shorter;
+            int longerLength;
+            int shorterLength;
+
+            if (original.length() > changed.length()) {
+                longer = original;
+                shorter = changed;
+                longerLength = original.length();
+                shorterLength = changed.length();
+            } else {
+                longer = changed;
+                shorter = original;
+                longerLength = changed.length();
+                shorterLength = original.length();
+            }
+
+            int diffs = 0;
+
+            for (int i = 0, j = 0; i < longerLength && j < shorterLength; i++, j++) {
+                char char1 = longer.charAt(i);
+                char char2 = shorter.charAt(j);
+
+                if (char1 != char2) {
+                    if (++diffs > 1) {
+                        return false;
+                    }
+                    i++;
+                }
             }
         }
 
-        if (original.length() > changed.length()) {
-            changes++;
-        } else if (original.length() < changed.length()) {
-            changes++;
-        }
-
-        return (changes > 0) && (changes - 2 == 0);
+        return true;
     }
-
 
     // insert a char
     // remove a char
@@ -36,7 +62,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("isPalindromePermutation:");
         System.out.println(String.format("%1$s: %2$b", "pale, ple", isOneAway("pale", "ple")));
-        System.out.println(String.format("%1$s: %2$b", "pales, ple", isOneAway("pales", "ple")));
+        System.out.println(String.format("%1$s: %2$b", "pales, pale", isOneAway("pales", "pale")));
         System.out.println(String.format("%1$s: %2$b", "pale, bale", isOneAway("pale", "bale")));
         System.out.println(String.format("%1$s: %2$b", "pale, bake", isOneAway("pale", "bake")));
     }
