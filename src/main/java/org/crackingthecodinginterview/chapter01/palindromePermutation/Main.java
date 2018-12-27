@@ -40,6 +40,6 @@ class Main {
 
     public static void main(String[] args) {
         System.out.println("isPalindromePermutation:");
-        System.out.println(String.format("%1$s: %2$b", "Tact Coa", Main.isPalindromePermutation("Tact Coa")));
+        System.out.println(String.format("%1$s: %2$b", "Tact Coa", isPalindromePermutation("Tact Coa")));
     }
 }
