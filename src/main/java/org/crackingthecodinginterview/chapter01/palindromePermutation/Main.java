@@ -1,7 +1,6 @@
 package org.crackingthecodinginterview.chapter01.palindromePermutation;
 
 import java.util.HashMap;
-import java.util.Map;
 
 class Main {
 
