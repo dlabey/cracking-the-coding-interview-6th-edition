@@ -6,27 +6,42 @@ public class Main {
         if (matrix.length == 0 || matrix.length != matrix[0].length) return false; // Not a square
         int n = matrix.length;
 
-        for (int layer = 0; layer < n / 2; layer++) {
-            int first = layer;
-            int last = n - 1 - layer;
-            for(int i = first; i < last; i++) {
-                int offset = i - first;
-                int top = matrix[first][i]; // save top
+        for (int l = 0; l < n / 2; l++) {
+            int lst = n - 1 - l;
+            for (int i = l; i < lst; i++) {
+                int o = i - l;
+                int t = matrix[l][i]; // save top
 
                 // left -> top
-                matrix[first][i] = matrix[last-offset][first];
+                matrix[l][i] = matrix[lst-o][l];
 
                 // bottom -> left
-                matrix[last-offset][first] = matrix[last][last - offset];
+                matrix[lst-o][l] = matrix[lst][lst - o];
 
                 // right -> bottom
-                matrix[last][last - offset] = matrix[i][last];
+                matrix[lst][lst - o] = matrix[i][lst];
 
                 // top -> right
-                matrix[i][last] = top; // right <- saved top
+                matrix[i][lst] = t; // right <- saved top
             }
         }
         return true;
+    }
+
+    static String printMatrix(int[][] matrix) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                stringBuilder.append(matrix[i][j]);
+                stringBuilder.append(" ");
+                if (j + 1 == matrix[i].length && i + 1 != matrix.length) {
+                    stringBuilder.append("\n");
+                }
+            }
+        }
+
+        return stringBuilder.toString();
     }
 
     // 1 2 3    7 4 1
@@ -40,6 +55,6 @@ public class Main {
                 { 7, 8, 9}
         };
         rotate(matrix);
-        System.out.println(matrix);
+        System.out.println(printMatrix(matrix));
     }
 }
