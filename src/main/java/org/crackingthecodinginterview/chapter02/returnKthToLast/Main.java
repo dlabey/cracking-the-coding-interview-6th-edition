@@ -24,7 +24,6 @@ public class Main {
     }
 
     static LinkedListNode returnKthToLast(LinkedListNode linkedList, int kth) {
-        LinkedListNode original = linkedList;
         int length = 0;
 
         ArrayList<LinkedListNode> pointers = new ArrayList<>();
